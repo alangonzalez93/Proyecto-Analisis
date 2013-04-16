@@ -1,0 +1,86 @@
+Universidad Nacional de Río Cuarto.
+Facultad de Ciencias Exactas, Físico-Químicas y Naturales.
+Departamento de Computación.
+Análisis y Diseño de Sistemas (3303).
+
+
+
+
+Especificación de Requisitos de Software
+(SRS)
+
+
+Proyecto:
+Revista Inmobiliaria
+
+
+Integrantes:
+Alan Gonzalez
+Joaquín Heredia
+Santiago Lapiana
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Índice
+
+
+Registro de Cambios
+1.  Introducción
+2.	Descripción
+3.	Requerimientos Específicos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1 Introducción
+
+En este documento se busca definir las especificaciones funcionales, no funcionales y del sistema necesarias para la implementación de una aplicación que permitirá la administración de un sistema para http://Inmobiliariarevista.com.ar  con el fin de permitir el manejo de un registro de usuarios que publiquen avisos, permitir la búsqueda de inmuebles bajo ciertos criterios a definir. Esta aplicación será utilizada por empleados administrativos mediante una interfaz de usuario (GUI).
+
+
+
+
+
+
