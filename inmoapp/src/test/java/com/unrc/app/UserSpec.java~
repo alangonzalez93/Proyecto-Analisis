@@ -1,0 +1,47 @@
+package com.unrc.app;
+
+import com.unrc.app.models.real_estate;
+
+import org.javalite.activejdbc.Base;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.javalite.test.jspec.JSpec.the;
+
+public class UserSpec{
+
+    @Before
+    public void before(){
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/db_prueba", "root", "root");
+        Base.openTransaction();
+    }
+
+    @After
+    public void after(){
+        Base.rollbackTransaction();
+        Base.close();
+    }
+
+    @Test
+    public void shouldValidateMandatoryFields(){
+
+        User real_estate = new real_estate();
+
+        //check errors
+        the(real_estate).shouldNotBe("valid");
+        the(real_estate.errors().get("web")).shouldBeEqual("value is missing");
+        the(real_estate.errors().get("mail")).shouldBeEqual("value is missing");
+        the(real_estate.errors().get("name")).shouldBeEqual("value is missing");
+        the(real_estate.errors().get("id")).shouldBeEqual("value is missing");
+        the(real_estate.errors().get("neighborhood")).shouldBeEqual("value is missing");
+        the(real_estate.errors().get("street")).shouldBeEqual("value is missing");
+        the(real_estate.errors().get("tel")).shouldBeEqual("value is missing");
+
+        //set missing values
+        real_estate.set("web", "John", "mail", "Doe");
+
+        //all is good:
+        the(real_estate).shouldBe("valid");
+    }
+}
