@@ -1,4 +1,4 @@
-package com.unrc.app;
+package src.main.java.com.unrc.app;
 
 import com.unrc.app.models.Building;
 import com.unrc.app.models.Locality;
@@ -80,7 +80,7 @@ public class ABMBuilding {
 			if (findInmueble(street,neigh)){
 				Building b = Building.first("b_street =?", "neighborhood = ?", street, neigh);
 				Owner owner = Owner.first("owner_dni = ?", dni);
-				owner.remove(b)
+				owner.remove(b);
 				Building.delete("b_street = ?, neighborhood = ?", street, neigh);
 			}
 			else{

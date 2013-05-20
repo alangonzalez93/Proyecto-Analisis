@@ -1,4 +1,4 @@
-package com.unrc.app;
+package src.main.java.com.unrc.app;
 
 import org.javalite.activejdbc.Base;
 
