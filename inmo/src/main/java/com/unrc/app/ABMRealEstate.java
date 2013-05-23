@@ -30,10 +30,9 @@ public class ABMRealEstate{
 		else{
 			RealEstate RE = RealEstate.create("rs_name", rsname, "rs_mail", rsmail, "web", rsweb, "tel", rstel, "rs_neighborhood", rsneighborhood, "rs_street", rsstreet);
 			RE.saveIt();
-			Locality l = Locality.first("name = ? ", loc);
+			Locality l = Locality.first("name = ? ",loc);
 			if (l == null) {
-				Locality local = new Locality();
-				local.set("name", loc);
+				Locality local = Locality.create("name",loc);
 				local.saveIt();
 				local.add(RE);
 

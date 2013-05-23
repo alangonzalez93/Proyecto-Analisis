@@ -21,13 +21,20 @@ public class Inmo {
         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
       
         //creo localidad rio cuarto y localidad achiras
-		Locality l= new Locality();
-		l.set("name", "rio cuarto");
-		l.saveIt();
+	
+        Locality l= Locality.first("name = ?", "rio cuarto");
+        if (l==null){
+    		Locality loc = Locality.create("name", "rio cuarto");
+    		loc.saveIt();
+        }
+
 		
-		Locality k = new Locality();
-		k.set("name", "achiras");
-		k.saveIt();
+        Locality k= Locality.first("name = ?", "achiras");
+        if (l==null){
+    		Locality locality = Locality.create("name", "achiras");
+    		locality.saveIt();
+        }
+
         
 		
 		// creo 3 duenios
@@ -66,7 +73,9 @@ public class Inmo {
 		
         ABMBuilding buil = new ABMBuilding();
         buil.altaBuilding("casa centrica", 500000, "venta", "casa", "centro", "san martin 500", "rio cuarto", "37177303");
-		
+        buil.altaBuilding("banda norte", 2000, "alquiler", "casa", "banda norte", "cordoba 661", "rio cuarto", "37562321");
+        
+        
         System.out.println( "Hello World!" );
     }
 }

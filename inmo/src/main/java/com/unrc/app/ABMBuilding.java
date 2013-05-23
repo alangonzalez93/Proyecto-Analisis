@@ -9,7 +9,7 @@ import com.unrc.app.models.Owner;
 public class ABMBuilding {
 
 	public Boolean findInmueble(String street, String neighborhood){
-		return (Building.first("b_street = ?, neighborhood = ?", street, neighborhood) != null);
+		return (Building.first("b_street = ? and neighborhood = ?", street, neighborhood) != null);
 	}
 	
 	public Boolean findOwner(String dni){
@@ -75,7 +75,7 @@ public class ABMBuilding {
 
 	public void bajaBuilding(String street, String neigh) {
 			if (findInmueble(street,neigh)){
-				Building.delete("b_street = ?, neighborhood = ?", street, neigh);
+				Building.delete("b_street = ? and neighborhood = ?", street, neigh);
 			}
 			else{
 				System.out.println("inmueble inexistente");
@@ -84,25 +84,25 @@ public class ABMBuilding {
 	
 	public void modPrice(String street, String neigh, int newprice) {
 		Building b = new Building();
-		b = Building.first("b_street = ?", "neighborhood = ?", street, neigh);
+		b = Building.first("b_street = ? and neighborhood = ?", street, neigh);
 		b.set("price", newprice);
 		b.saveIt();
 	}
 	
 	public void modType(String street, String neigh, String newtype){
-		Building b = Building.first("b_street = ?", "neighborhood = ?", street, neigh);
+		Building b = Building.first("b_street = ? and neighborhood = ?", street, neigh);
 		b.set("type", newtype);
 		b.saveIt();
 	}
 	
 	public void modDesc(String street, String neigh, String newdesc){
-		Building b = Building.first("b_street = ?", "neighborhood = ?", street, neigh);
+		Building b = Building.first("b_street = ? and neighborhood = ?", street, neigh);
 		b.set("description", newdesc);
 		b.saveIt();
 	}
 	 
 	public void modOwner(String street, String neigh, String dninewowner){
-		Building b = Building.first("b_street = ?", "neighborhood = ?", street, neigh);
+		Building b = Building.first("b_street = ? and neighborhood = ?", street, neigh);
 		Owner owner = Owner.first("owner_dni = ?", dninewowner);
 		if(owner != null){
 			owner.add(b);

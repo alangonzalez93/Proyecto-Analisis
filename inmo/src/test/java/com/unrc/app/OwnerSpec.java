@@ -1,11 +1,11 @@
-package src.main.java.com.unrc.app;
-
-import src.main.java.com.unrc.app.models.Owner;
+package com.unrc.app;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.unrc.app.models.Owner;
 
 import static org.javalite.test.jspec.JSpec.the;
 
