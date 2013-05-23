@@ -1,0 +1,37 @@
+package com.unrc.app;
+
+import com.unrc.app.models.real_estate;
+
+import org.javalite.activejdbc.Base;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class Inmo {
+    public static void main( String[] args )
+    {
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/db_prueba", "root", "root");
+
+		locality l= new locality();
+		l.set("name", "rio cuarto");
+		
+
+
+        real_estate e = new real_estate();
+        e.set("localities_id", "");
+        e.set("mail", "cacacaca@hotmail.com");
+        e.set("name", "alan");
+ 	    e.set("neighborhood", "holakase");
+ 	    e.set("street", "kinda");
+ 	    e.set("tel", "65554123312");
+		l.add(e);
+        e.saveIt();
+
+		
+
+		
+
+		
+
+        System.out.println( "Hello World!" );
+    }
+}

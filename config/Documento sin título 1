@@ -1,0 +1,57 @@
+package com.unrc.app;
+
+import org.javalite.activejdbc.Base;
+
+import com.unrc.app.models.Building;
+import com.unrc.app.models.Locality;
+import com.unrc.app.models.Owner;
+import com.unrc.app.models.RealEstate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.util.Scanner;
+
+@SuppressWarnings("unused")
+public class Inmo {
+	private static Scanner sc =new Scanner(System.in);
+    public static void main( String[] args )
+    {
+        Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
+        //creo una localidad
+	//	Locality l= new Locality();
+		//l.set("name", "rio cuarto");
+		//l.saveIt();
+		
+		System.out.println("creando inmueble");
+		System.out.println("ingresa la localidad");
+        String locality = sc.nextLine();
+		System.out.println("insertar tipo");
+		String bype = sc.nextLine();
+		System.out.println("insertar categoria");
+		String bcategorie = sc.nextLine();
+		System.out.println("engresa precio");
+		float bprecio = sc.nextFloat();
+		System.out.println("insertar calle");
+		String bstreet = sc.nextLine();
+		System.out.println("insertar barrio");
+		String bneighborhood = sc.nextLine();
+		System.out.println("inserta desc");
+		String bdesc = sc.nextLine();
+		System.out.println("ingresa el dueño");
+		String owner = sc.nextLine();
+		sc.close();
+
+		
+		
+		//ABMRealEstate newRE = new ABMRealEstate();
+		//newRE.Alta(rsname, rsmail, rsweb, rstel, rsneighborhood, rsstreet, locality);
+		
+	//	System.out.println("ingresa el nombre de la inmo a eliminar");
+		//String realname = sc.nextLine();
+	//	newRE.Baja(realname);
+	
+        ABMBuilding buil = new ABMBuilding();
+        buil.AltaBuilding(bprecio, bype, bdesc, locality, bstreet, owner, bneighborhood, bcategorie);
+		
+        System.out.println( "Hello World!" );
+    }
+}

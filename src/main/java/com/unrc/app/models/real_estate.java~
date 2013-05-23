@@ -1,0 +1,9 @@
+package com.unrc.app.models;
+
+import org.javalite.activejdbc.Model;
+
+public class real_estate extends Model {
+  static{
+      validatePresenceOf("name");
+  }
+}
