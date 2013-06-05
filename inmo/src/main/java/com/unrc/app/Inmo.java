@@ -1,7 +1,9 @@
 package com.unrc.app;
-
+import static spark.Spark.*;
+import spark.*;
 
 import org.javalite.activejdbc.Base;
+import org.javalite.activejdbc.LazyList;
 
 import com.unrc.app.models.Building;
 import com.unrc.app.models.Locality;
@@ -11,7 +13,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.*;
-import java.util.Scanner;
 
 @SuppressWarnings("unused")
 public class Inmo {
@@ -20,7 +21,14 @@ public class Inmo {
     {
         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
       
-        //creo localidad rio cuarto y localidad achiras
+     /*   get(new Route("/hello") {
+            @Override
+            public Object handle(Request request, Response response) {
+               return "Hello World!";
+            }
+         });*/
+        
+//creo localidad rio cuarto y localidad achiras
 	
         Locality l= Locality.first("name = ?", "rio cuarto");
         if (l==null){
@@ -73,9 +81,9 @@ public class Inmo {
 		
         ABMBuilding buil = new ABMBuilding();
         buil.altaBuilding("casa centrica", 500000, "venta", "casa", "centro", "san martin 500", "rio cuarto", "37177303");
-        buil.altaBuilding("banda norte", 2000, "alquiler", "casa", "banda norte", "cordoba 661", "rio cuarto", "37562321");
+        buil.altaBuilding("banda norte", 2000, "alquiler", "casa", "banda norte", "cordoba 661", "rio cuarto", "37546231");
+        buil.altaBuilding("barrio alberdi", 3500, "alquiler", "casa", "alberdi", "jujuy 451", "achiras", "37546231");
         
-        
-        System.out.println( "Hello World!" );
+              System.out.println( "Hello World!" );
     }
 }

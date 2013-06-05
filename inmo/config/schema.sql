@@ -36,7 +36,7 @@ CREATE TABLE buildings (
     neighborhood varchar(50),
     description varchar(100) NOT NULL,
     b_street varchar(50),
-    categorie int NOT NULL,
+    category int NOT NULL,
     locality_id int,
 	owner_id int,
 	CONSTRAINT pk_b_id PRIMARY KEY (id),

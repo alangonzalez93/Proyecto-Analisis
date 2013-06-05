@@ -3,6 +3,7 @@ import org.javalite.activejdbc.Model;
 
 public class Building extends Model{
 	  static{
-	      validatePresenceOf("type", "description", "categorie");
+	      validatePresenceOf("type", "description", "category","b_street","neighborhood");
+
 	  }
 }

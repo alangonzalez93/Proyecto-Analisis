@@ -1,6 +1,6 @@
 package com.unrc.app;
 
-import com.unrc.app.models.RealEstate;
+import com.unrc.app.models.Locality;
 
 import org.javalite.activejdbc.Base;
 import org.junit.After;
@@ -9,8 +9,7 @@ import org.junit.Test;
 
 import static org.javalite.test.jspec.JSpec.the;
 
-
-public class RealEstateSpec {
+public class LocalitySpec {
 
 	@Before
 	public void before() {
@@ -18,29 +17,27 @@ public class RealEstateSpec {
 		Base.openTransaction();
 	}
 	
+	
 	@After
 	public void after() {
 		Base.rollbackTransaction();
 		Base.close();
 	}
 	
-	
 	@Test
 	public void shouldValidateMandatoryFields() {
 		
-		RealEstate rs = new RealEstate();
-		
+		Locality locality = new Locality();
 		
 		//Check Errors
-		the(rs).shouldNotBe("valid");
-		the(rs.errors().get("rs_name")).shouldBeEqual("value is missing");
-		the(rs.errors().get("tel")).shouldBeEqual("value is missing");
+		the(locality).shouldNotBe("valid");
+		the(locality.errors().get("name")).shouldBeEqual("value is missing");
 		
 		//Set Missing Values
-		rs.set("rs_name", "default name");
-		rs.set("tel","12345");
+		locality.set("name","fake locality");
 		
 		//All Is Good
-		the(rs).shouldBe("valid");
+		the(locality).shouldBe("valid");
+		
 	}
 }

@@ -8,14 +8,16 @@ import com.unrc.app.models.Owner;
 
 public class ABMBuilding {
 
+
+	//Funcion que permite encontrar un inmueble
 	public Boolean findInmueble(String street, String neighborhood){
 		return (Building.first("b_street = ? and neighborhood = ?", street, neighborhood) != null);
 	}
-	
+	//Funcion que nos dice si un duenio existe 
 	public Boolean findOwner(String dni){
 		return (Owner.first("owner_dni = ?", dni)!=null);
 	}
-
+	//Funcion que verifica que el tipo pasado por el usuario para crear un inmueble sea correcto
 	public int verifType(String type){
 		if (type == "Casa" || type == "casa") {
 			return 1;
@@ -42,18 +44,18 @@ public class ABMBuilding {
 			return -1;
 		}
 	}
-
+	//Funcion que, si no existe la localidad pasada por el usuario, la crea
 	public void createLocality(String n){
 		Locality l = Locality.create("name",n);
 		l.saveIt();
 	}
 
-	
-	public void altaBuilding(String description, int price, String categorie, String type, String neighborhood, String street, String locality, String dni) {
+
+	public void altaBuilding(String description, int price, String category, String type, String neighborhood, String street, String locality, String dni) {
 		if (findInmueble(street,neighborhood)) {
 			System.out.println("El inmueble ya existe");
 		} else {
-			Building b = Building.create("price", price,"type",verifType(type),"neighborhood",neighborhood,"description",description,"b_street",street,"categorie",verifCat(categorie));
+			Building b = Building.create("price", price,"type",verifType(type),"neighborhood",neighborhood,"description",description,"b_street",street,"category",verifCat(category));
 			b.saveIt();
 			Locality l = Locality.first("name = ? ", locality);
 			if (l == null) {
@@ -73,7 +75,7 @@ public class ABMBuilding {
 		}
 	}
 
-	public void bajaBuilding(String street, String neigh) {
+	public void bajaBuilding(String street, String neigh, String dni) {
 			if (findInmueble(street,neigh)){
 				Building.delete("b_street = ? and neighborhood = ?", street, neigh);
 			}
