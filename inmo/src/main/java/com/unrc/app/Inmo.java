@@ -84,6 +84,17 @@ public class Inmo {
         buil.altaBuilding("banda norte", 2000, "alquiler", "casa", "banda norte", "cordoba 661", "rio cuarto", "37546231");
         buil.altaBuilding("barrio alberdi", 3500, "alquiler", "casa", "alberdi", "jujuy 451", "achiras", "37546231");
         
-              System.out.println( "Hello World!" );
+        Search prueba = new Search();
+        final String cadena = prueba.toString();
+        System.out.println(cadena);
+        
+        get(new Route("/buildings") {
+            @Override
+            public Object handle(Request request, Response response) {
+               return ("Inmuebles"+cadena);
+            }
+         });
+        
+        System.out.println( "Hello World!" );
     }
 }

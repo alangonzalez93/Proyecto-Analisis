@@ -1,7 +1,7 @@
 package com.unrc.app;
 
 import com.unrc.app.models.Building;
-import com.unrc.app.models.Locality;
+//import com.unrc.app.models.Locality;
 import com.unrc.app.models.Owner;
 
 import org.javalite.activejdbc.Base;
@@ -33,9 +33,9 @@ public class BuildingSpec {
 		//Check Errors
 		
 	//	the(building).shouldNotBe("valid");
-	//	the(building.errors().get("id_locality"));
+	//	the(building.errors().get("id_locality")).shouldBeEqual("value is missing");
 		the(building).shouldNotBe("valid");
-		//the(building.errors().get("id_owner"));
+		the(building.errors().get("id_owner")).shouldBeNull();
 		the(building).shouldNotBe("valid");
 		the(building.errors().get("b_street")).shouldBeEqual("value is missing");
 		the(building.errors().get("neighborhood")).shouldBeEqual("value is missing");
@@ -69,11 +69,12 @@ public class BuildingSpec {
 		l.add(building);
 		*/
 		//Set Missing Values
-	/*	Owner owner = new Owner();
+		Owner owner = new Owner();
 		owner.set("owner_name", "John Doe", "owner_mail", "abc@abc.com","owner_neighborhood", "A", "owner_street", "B", "owner_dni", "123456");
 		owner.saveIt();
-		owner.add(building);
-		*/
+	//	owner.add(building);
+		Object id = owner.getId();
+		building.set("owner_id", id);
 		//Set Missing Values
 		building.set("b_street","fake street 123");
 		building.set("neighborhood","fake neighborhood");

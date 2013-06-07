@@ -25,13 +25,13 @@ public class Search{
 		return id_loc;
 	}
 	
-	public String toString(LazyList<Building> buildings){
-	//	LazyList<Building> buildings = Building.where("price >= ? and price <= ? and type = ? and locality_id = ?",min,max,type,verifLocality(loc));
+	public String toString(){
+		LazyList<Building> build = Building.findAll();  //where("price >= ? and price <= ? and type = ? and locality_id = ?",min,max,type,verifLocality(loc));
 		int i=0;
-		long cant = buildings.size();
-		String list=null;
-		while ((!buildings.isEmpty()) && i < cant){
-			Building buil = buildings.get(i);
+		long cant = build.size();
+		String list="";
+		while ((!build.isEmpty()) && i < cant){
+			Building buil = build.get(i);
 			int id = buil.getInteger("id");
 			//System.out.println(id);
 			int price = buil.getInteger("price");
