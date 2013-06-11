@@ -1,10 +1,22 @@
 package com.unrc.app;
 import static spark.Spark.*;
+
+import java.io.File;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+
 import spark.*;
 
 import org.javalite.activejdbc.Base;
+import org.javalite.activejdbc.Configuration;
 import org.javalite.activejdbc.LazyList;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.Template;
 import com.unrc.app.models.Building;
 import com.unrc.app.models.Locality;
 import com.unrc.app.models.Owner;
@@ -12,11 +24,12 @@ import com.unrc.app.models.RealEstate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+
 
 @SuppressWarnings("unused")
 public class Inmo {
-	private static Scanner sc =new Scanner(System.in);
+	
+	
     public static void main( String[] args )
     {
         Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
@@ -84,6 +97,69 @@ public class Inmo {
         buil.altaBuilding("banda norte", 2000, "alquiler", "casa", "banda norte", "cordoba 661", "rio cuarto", "37546231");
         buil.altaBuilding("barrio alberdi", 3500, "alquiler", "casa", "alberdi", "jujuy 451", "achiras", "37546231");
         
-              System.out.println( "Hello World!" );
+        Search search = new Search();
+        final String cadena = search.toString();
+        final String real = search.RealEstates();
+        final String own = search.OwnerStr();
+        
+        	get(new Route("/buildings") {
+               @Override
+               public Object handle(Request request, Response response) {
+                  return "Inmuebles: "+cadena;
+               }
+            });
+        	
+        	get(new Route("/realEstates") {
+                @Override
+                public Object handle(Request request, Response response) {
+                   return "Inmobiliarias: "+real;
+                }
+             });
+       
+           	get(new Route("/owners") {
+                @Override
+                public Object handle(Request request, Response response) {
+                   return "Duenios: "+own;
+                }
+             });
+           	
+        	get(new Route("/hello") {
+                @Override
+               
+                public Object handle(Request request, Response response) {
+       			//Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "Pantera1.");
+                   String title = "<h1> Inmobiliaria </h1>";
+
+       			String menu = "<ul> <li> <a href=\"/buildings\"> Inmuebles </a> </li> </ul>";
+       			String menu2 = "<ul> <li> <a href=\"/owners\"> Dueños </a> </li> </ul>";
+       			String menu3 = "<ul> <li> <a href=\"/realEstates\"> Inmobiliarias </a> </li> </ul>";
+
+                   String footer = "<p> created by: lagax</p>";
+       			//Base.close();
+                   return title + menu + menu2 + menu3 + footer;
+                };
+       		 });
+        	
+            post(new Route("/owner") {
+              //  Random random = new Random();
+                @Override
+                public Object handle(Request request, Response response) {
+                    String name = request.queryParams("owner_name");
+                    String dni = request.queryParams("owner_dni");
+                    Owner owner = new Owner();
+                    owner.set("owner_name", "owner_dni", name, dni);
+                    owner.saveIt();
+                 //   int id = random.nextInt(Integer.MAX_VALUE);
+                  //  books.put(String.valueOf(id), book);
+                    
+                    response.status(201); // 201 Created
+                    return owner.getId();
+                }
+            });
+            
+       
+            
+            
+           System.out.println( "Hello World!" );
     }
 }
