@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.unrc.app.TestSuite
 -------------------------------------------------------------------------------
-<<<<<<< HEAD
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.824 sec
-=======
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.006 sec
->>>>>>> 6963fbe8762f5a2a571b46e7687f1b20ff4bee92
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.729 sec
