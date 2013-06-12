@@ -17,33 +17,7 @@ public class ABMBuilding {
 	public Boolean findOwner(String dni){
 		return (Owner.first("owner_dni = ?", dni)!=null);
 	}
-	//Funcion que verifica que el tipo pasado por el usuario para crear un inmueble sea correcto
-	public int verifType(String type){
-		if (type == "Casa" || type == "casa") {
-			return 1;
-		} if (type == "Campo" || type =="campo") {
-			return 2;
-		} if (type == "Quinta" || type == "quinta"){
-			return 3;
-		} if (type == "Departamento" || type == "departamento") {
-			return 4;
-		} if (type == "Oficina" || type == "oficina"){
-			return 5;
-		} if (type == "Cochera" || type == "cochera"){
-			return 6;
-		} else {
-			return -1;
-		}
-	}
-	public int verifCat(String cat){
-		if (cat =="Alquiler" || cat == "alquiler") {
-			return 1;
-		} if (cat == "Venta" || cat == "venta") {
-			return 2;
-		} else {
-			return -1;
-		}
-	}
+
 	//Funcion que, si no existe la localidad pasada por el usuario, la crea
 	public void createLocality(String n){
 		Locality l = Locality.create("name",n);
@@ -55,7 +29,7 @@ public class ABMBuilding {
 		if (findInmueble(street,neighborhood)) {
 			System.out.println("El inmueble ya existe");
 		} else {
-			Building b = Building.create("price", price,"type",verifType(type),"neighborhood",neighborhood,"description",description,"b_street",street,"category",verifCat(category));
+			Building b = Building.create("price", price,"type",type,"neighborhood",neighborhood,"description",description,"b_street",street,"category",category);
 			b.saveIt();
 			Locality l = Locality.first("name = ? ", locality);
 			if (l == null) {
@@ -75,7 +49,7 @@ public class ABMBuilding {
 		}
 	}
 
-	public void bajaBuilding(String street, String neigh, String dni) {
+	public void bajaBuilding(String street, String neigh) {
 			if (findInmueble(street,neigh)){
 				Building.delete("b_street = ? and neighborhood = ?", street, neigh);
 			}

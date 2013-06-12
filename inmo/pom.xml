@@ -36,23 +36,17 @@
     <dependency>
       <groupId>com.sparkjava</groupId>
       <artifactId>spark-core</artifactId>
-      <version>0.9.9.7-SNAPSHOT</version>
-      
-</dependency>
+      <version>0.9.9.7-SNAPSHOT</version>      
+	</dependency>
     
-    <dependency>
-  <groupId>org.freemarker</groupId>
-  <artifactId>freemarker</artifactId>
-  <!-- Latest 2.3.x (not 2.4.x), at least 2.3.19 -->
-  <version>[2.3.19,2.4)</version>
-</dependency>
 
-<dependency>
-  <groupId>org.freemarker</groupId>
-  <artifactId>freemarker-gae</artifactId>
-  <!-- Latest 2.3.x (not 2.4.x), at least 2.3.19 -->
-  <version>[2.3.19,2.4)</version>
-</dependency>
+	<dependency>
+ 	<groupId>org.freemarker</groupId>
+ 	<artifactId>freemarker</artifactId>
+ 	<version>2.3.19</version>
+	</dependency>
+
+
 
   </dependencies>
 
