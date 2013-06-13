@@ -5,6 +5,7 @@ import java.util.*;
 import org.javalite.activejdbc.LazyList;
 import org.javalite.activejdbc.Model;
 
+import com.unrc.app.models.Building;
 import com.unrc.app.models.Locality;
 import com.unrc.app.models.Owner;
 import com.unrc.app.models.OwnersRealEstates;
@@ -13,8 +14,8 @@ import com.unrc.app.models.RealEstate;
 @SuppressWarnings("unused")
 public class ABMOwner {
 	
-	public boolean findOwner(String owname){
-		return (Owner.first("owner_name = ?", owname) != null);
+	public boolean findOwner(String dni){
+		return (Owner.first("owner_dni = ?", dni) != null);
 	}
 	
 	public void Alta(String owname,String owneighborhood,String owstreet,String owmail,String owlocality,String owdni){
@@ -41,9 +42,12 @@ public class ABMOwner {
 
 	public void Baja(String dni){
 		Owner owner = Owner.first("owner_dni = ?", dni);
-		short id = (Short) owner.getId();
-		OwnersRealEstates.delete("owner_id = ?", id);
-		Owner.delete("owner_dni = ?", dni);
+		int id = owner.getInteger("id");
+		Building building = Building.first("owner_id = ?", id);
+		if (building == null){
+			OwnersRealEstates.delete("owner_id = ?", id);
+			Owner.delete("owner_dni = ?", dni);
+		}
 	}
 
 	public void ModWebOw(String name, String web){

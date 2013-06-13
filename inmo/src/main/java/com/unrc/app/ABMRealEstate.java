@@ -23,7 +23,7 @@ public class ABMRealEstate{
 		return (RealEstate.first("rs_name = ?", name) != null);
 	}
 
-	public void Alta(String rsname, String rsmail, String rsweb, int rstel,String rsneighborhood,String rsstreet, String loc, LinkedList<String> dniowners){
+	public void Alta(String rsname, String rsmail, String rsweb, String rstel,String rsneighborhood,String rsstreet, String loc, LinkedList<String> dniowners){
 		if (findRealEstate(rsname)){
 			System.out.println("real estate ya existente");
 		}
@@ -73,7 +73,7 @@ public class ABMRealEstate{
 		RE.saveIt();
 	}
 
-	public void ModTel(String name, int tel){
+	public void ModTel(String name, String tel){
 		RealEstate RE = new RealEstate();
 		RE = RealEstate.first("rs_name = ?", name);
 		RE.set("tel", tel);
