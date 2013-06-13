@@ -110,16 +110,12 @@
             value="Crear Inmueble" id="savebutton" name="savebutton" style="" type="submit">
           <br>
         </div>
+        
         <div style="position: absolute; left: 600px; top: 362px;"><input class="green_button"
             value="Borrar Datos" id="resetbutton" name="reset" style="" type="reset">
           <br>
         </div>
-        <div>
-          <address style="margin-left: -345px; width: 283px; left: 693px; top: 400px;"
-            class="firma"> Copyleft 2013-Gonzalez-Heredia-Lapiana </address>
-        </div>
       </form>
     </div>
-    
   </body>
 </html>

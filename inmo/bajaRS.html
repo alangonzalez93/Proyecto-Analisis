@@ -1,40 +1,74 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html><head>
-  
-  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
-  <title>eliminarRS</title>
-
-  
-</head><body>
-<form method="post" action="/eliminarRS" name="Eliminar RealEstate"><br>
-  <div style="position: absolute; left: 21px; top: 11px; width: 684px; text-align: center; height: 35px;">
-  <h1><span style="font-family: Helvetica,Arial,sans-serif;">Eliminar
-Inmobiliaria<br>
-  </span></h1>
-  </div>
-  <br>
-  <br>
-  <br>
-  <div style="position: absolute; left: 48px; top: 108px; width: 164px;"><span style="font-family: Helvetica,Arial,sans-serif;">Nombre inmobiliaria</span><br>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <div style="position: absolute; left: 127px; top: 165px;"><input class="green_button" value="Eliminar inmobiliaria" id="savebutton" name="savebutton" style="" type="submit"> <br>
-  </div>
-  <div style="position: absolute; left: 35px; top: 290px; font-family: Helvetica,Arial,sans-serif;"><a href="localhost:4567/realestate">Atras</a><br>
-  </div>
-  <br>
-  <div style="position: absolute; left: 222px; top: 107px;"><input name="name"><br>
-  </div>
-  <br>
-  <br>
-  <br>
-  <div style="position: absolute; left: 359px; top: 166px;"><input class="green_button" value="Borrar Datos" id="resetbutton" name="reset" style="" type="reset"> <br>
-  </div>
-</form>
-
-</body></html>
+<html>
+  <head>
+    <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+    <title>Eliminar Inmobiliaria</title>
+    <style>
+    body.cuerpo {
+        background-image: url('nice_green_pattern.jpg');
+        background-color: #336666;
+        background-size: 1400px,1000px;
+        background-repeat: no-repeat;);
+      } 
+      
+      div.text {
+        font-family: Helvetica,Arial,sans-serif;
+        color: black;
+        width: 50px;
+        text-align: center;
+      }
+      
+     div.recuadro {  
+        color: black;
+        position: absolute;
+        margin-left: 100px;
+        margin-right: 100px;
+        width: 1000px;
+        margin-bottom:100 ;
+        height: 800px;
+        background-color: #ededed;
+        background-size: 100px,100px; 
+      }
+      
+      address.firma { 
+        font-family: Swasdee;
+        font-size: small; 
+        position: absolute;
+        bottom: 5px;
+        left: 350px;
+        border-top: thin dotted
+      }
+    </style>
+  </head>
+  <body class="cuerpo">
+    <div style="top: 8px; height: 423px;" class="recuadro">
+      <form method="post" action="/eliminarRS" name="Delete RS"><br>
+        <div style="left: 404px; top: 196px; position: absolute;"><input required="required"
+            name="name"><br>
+        </div>
+        <div style="position: absolute; left: 184px; top: 13px; width: 684px; text-align: center; height: 35px;"
+          class="text">
+          <h1><span style="font-family: Helvetica,Arial,sans-serif;">Eliminar
+              Inmobiliaria<br>
+            </span></h1>
+        </div>
+        <br>
+        <div style="position: absolute; left: 378px; top: 165px; width: 273px;"
+          class="text">Nombre de la Inmobiliaria<br>
+        </div>
+        <div style="position: absolute; left: 184px; top: 358px;"><input class="green_button"
+            value="Eliminar Inmobiliaria" id="savebutton" name="savebutton" style=""
+            type="submit"> <br>
+        </div>
+        <div style="position: absolute; left: 688px; top: 358px;"><input class="green_button"
+            value="Borrar Datos" id="resetbutton" name="reset" style="" type="reset">
+          <br>
+        </div>
+        <div>
+          <address style="margin-left: -345px; width: 283px; left: 693px; top: 400px;"
+            class="firma"> Copyleft 2013-Gonzalez-Heredia-Lapiana </address>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

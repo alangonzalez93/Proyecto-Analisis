@@ -37,114 +37,121 @@ public class Inmo {
       configuracion.setClassForTemplateLoading(Inmo.class, "/");
       
        //Menu principal
-        get(new Route("/index") {
-                @Override
-               
-                public Object handle(Request request, Response response) {
-       			//Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
-       			//Base.openTransaction();
-                String head = "<head>" + 
-                		"<title>Sistema de Gestión Inmobiliaria</title>" +
-                		" </head>";
-                		
-                	
-                String header = "<h1> Inmobiliaria </h1>";
-
-       			String menu = "<ul> <li> <a href=\"/building\"> Inmuebles </a> </li> </ul>";
-       			String menu2 = "<ul> <li> <a href=\"/owner\"> Dueños </a> </li> </ul>";
-       			String menu3 = "<ul> <li> <a href=\"/realEstate\"> Inmobiliarias </a> </li> </ul>";
-       			
-       			//Base.close();
-                   return head+  header + menu + menu2 + menu3;
-                };
-       		 });
-       
+      Spark.get( new Route("/index") {
+    	  //El objeto que recogerá la salida
+    	  StringWriter writer = new StringWriter();
+    	  @Override
+    	  public Object handle(Request arg0, Response arg1) {
+    	  try {
+    		  
+              //Se carga la plantilla
+    		  Template plantilla = configuracion.getTemplate("index.html");
+    		  //Cargamos el map, que se va a utilizar para aplicarlo a la plantilla
+    		  Map<String, Object> ownerMap = new HashMap<String, Object>();
+    		  //Procesamos la plantilla
+    		  plantilla.process(ownerMap, writer);
+    	  } catch (Exception e) {
+    		  // Si falla, devuelve un 500
+    		  halt(500);
+    		  e.printStackTrace();
+    	  }
+    	  return writer;
+       }
+      });  
+      
        //Menu de inmuebles	
-        	get(new Route("/building") {
-                @Override
-                
-                public Object handle(Request request, Response response) {
-                	
-                String head = "<head>" + 
-                    		"<title>Gestion de Inmuebles</title>" +
-                    		" </head>";
-                	
-       			String header = "<h1>Menú Inmueble </h1>";
-
-       			String alta = "<ul> <li> <a href=\"/altaBuilding\"> Crear inmueble </a> </li> </ul>";
-       			String baja = "<ul> <li> <a href=\"/bajaBuilding\"> Eliminar inmueble </a> </li> </ul>";
-       			String listar  = "<ul> <li> <a href=\"/listarBuilding\"> Listar inmuebles </a> </li> </ul>";
-       			String busqueda  = "<ul> <li> <a href=\"/buildingSearchMenu\"> Buscar Inmuebles </a> </li> </ul>";
-       			String atras = "<ul> <li> <a href=\"/index\">Volver</a></li></ul>";
-       			
-       			return head + header + alta + baja + listar+ busqueda + atras;
-                };
-       		 });
+      Spark.get( new Route("/building") {
+    	  //El objeto que recogerá la salida
+    	  StringWriter writer = new StringWriter();
+    	  @Override
+    	  public Object handle(Request arg0, Response arg1) {
+    	  try {
+    		  
+              //Se carga la plantilla
+    		  Template plantilla = configuracion.getTemplate("building.html");
+    		  //Cargamos el map, que se va a utilizar para aplicarlo a la plantilla
+    		  Map<String, Object> ownerMap = new HashMap<String, Object>();
+    		  //Procesamos la plantilla
+    		  plantilla.process(ownerMap, writer);
+    	  } catch (Exception e) {
+    		  // Si falla, devuelve un 500
+    		  halt(500);
+    		  e.printStackTrace();
+    	  }
+    	  return writer;
+       }
+      });         
        
-       //Menu de duenos
-        	get(new Route("/owner") {
-                @Override
-               
-                public Object handle(Request request, Response response) {
-                String head = "<head>" + 
-                    		"<title>Gestion de Duenos</title>" +
-                    		" </head>";
-                	
-                String header = "<h1>Menú Dueños </h1>";
-
-       			String alta = "<ul> <li> <a href=\"/altaOwner\"> Crear dueño </a> </li> </ul>";
-       			String baja = "<ul> <li> <a href=\"/bajaOwner\"> Eliminar dueño </a> </li> </ul>";
-       			String listar  = "<ul> <li> <a href=\"/listarOwner\"> Listar dueños </a> </li> </ul>";
-       			String atras = "<ul> <li> <a href=\"/index\">Volver</a></li></ul>";
-       			
-                   return head + header + alta + baja + listar + atras;
-                };
-       		 });
+      
+      //Menu de duenos
+      Spark.get( new Route("/owner") {
+    	  //El objeto que recogerá la salida
+    	  StringWriter writer = new StringWriter();
+    	  @Override
+    	  public Object handle(Request arg0, Response arg1) {
+    	  try {
+    		  
+              //Se carga la plantilla
+    		  Template plantilla = configuracion.getTemplate("owner.html");
+    		  //Cargamos el map, que se va a utilizar para aplicarlo a la plantilla
+    		  Map<String, Object> ownerMap = new HashMap<String, Object>();
+    		  //Procesamos la plantilla
+    		  plantilla.process(ownerMap, writer);
+    	  } catch (Exception e) {
+    		  // Si falla, devuelve un 500
+    		  halt(500);
+    		  e.printStackTrace();
+    	  }
+    	  return writer;
+       }
+      });  
+      
+      //Menu de Inmobiliarias
+      Spark.get( new Route("/realEstate") {
+    	  //El objeto que recogerá la salida
+    	  StringWriter writer = new StringWriter();
+    	  @Override
+    	  public Object handle(Request arg0, Response arg1) {
+    	  try {
+    		  
+              //Se carga la plantilla
+    		  Template plantilla = configuracion.getTemplate("realEstate.html");
+    		  //Cargamos el map, que se va a utilizar para aplicarlo a la plantilla
+    		  Map<String, Object> ownerMap = new HashMap<String, Object>();
+    		  //Procesamos la plantilla
+    		  plantilla.process(ownerMap, writer);
+    	  } catch (Exception e) {
+    		  // Si falla, devuelve un 500
+    		  halt(500);
+    		  e.printStackTrace();
+    	  }
+    	  return writer;
+       }
+      });  
        	
        //Menu de busqueda de inmuebles
-        	get(new Route("/buildingSearchMenu") {
-                @Override
-               
-                public Object handle(Request request, Response response) {
-                String head = "<head>" + 
-                    		"<title>Menu de Busqueda de Inmuebles</title>" +
-                    		" </head>";
-                	
-                String header = "<h1>Buscar por: </h1>";
-
-       			String cat = "<ul> <li> <a href=\"/searchByCategory\"> Categoria </a> </li> </ul>";
-       			String tipo = "<ul> <li> <a href=\"/searchByType\"> Tipo </a> </li> </ul>";
-       			String precio  = "<ul> <li> <a href=\"/searchByPrice\"> Precio </a> </li> </ul>";
-       			String loc = "<ul> <li> <a href=\"/searchByLocality\"> Localidad </a> </li> </ul>";
-       			
-       			
-       			String atras = "<ul> <li> <a href=\"/building\">Volver</a></li></ul>";
-       			
-                   return head + header + cat+ tipo + precio + loc + atras;
-                };
-       		 });
+      Spark.get( new Route("/buildingSearchMenu") {
+    	  //El objeto que recogerá la salida
+    	  StringWriter writer = new StringWriter();
+    	  @Override
+    	  public Object handle(Request arg0, Response arg1) {
+    	  try {
+    		  
+              //Se carga la plantilla
+    		  Template plantilla = configuracion.getTemplate("searchMenu.html");
+    		  //Cargamos el map, que se va a utilizar para aplicarlo a la plantilla
+    		  Map<String, Object> ownerMap = new HashMap<String, Object>();
+    		  //Procesamos la plantilla
+    		  plantilla.process(ownerMap, writer);
+    	  } catch (Exception e) {
+    		  // Si falla, devuelve un 500
+    		  halt(500);
+    		  e.printStackTrace();
+    	  }
+    	  return writer;
+       }
+      });  
         	
-       //Menu de inmobiliarias
-        	get(new Route("/realEstate") {
-                @Override
-               
-                public Object handle(Request request, Response response) {
-              
-                String head = "<head>" + 
-                    		"<title>Gestion de Inmobiliarias</title>" +
-                    		" </head>";
-                	
-                String header = "<h1>Menú Inmobiliarias </h1>";
-
-       			String alta = "<ul> <li> <a href=\"/altaRealEstate\"> Crear inmobiliaria </a> </li> </ul>";
-       			String baja = "<ul> <li> <a href=\"/bajaRealEstate\"> Eliminar inmobiliaria </a> </li> </ul>";
-       			String listar  = "<ul> <li> <a href=\"/listarRealEstate\"> Listar inmobiliarias </a> </li> </ul>";
-       			String atras = "<ul> <li> <a href=\"/index\">Volver</a></li></ul>";
-       			
-       		
-                   return head+ header + alta + baja + listar + atras;
-                };
-       		 });
         	
        //Crear Dueno 
         	post(new Route("/newOwner") {
@@ -543,13 +550,13 @@ public class Inmo {
             	String head = "<head>" + 
                 		"<title>Resultado de la busqueda</title>" +
                 		" </head>";
-            	String msg = "<h1>Inmuebles disponibles para: </h1>";
+            	String msg = "<h1>Inmuebles disponibles para: "+cat+" </h1>";
         		Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
             	Search search = new Search();
             	String list = search.searchByCat(cat);	
  
             	Base.close();
-            	return head + msg + cat + list + atras;
+            	return head + msg + list + atras;
             	}
             });
             
@@ -566,13 +573,13 @@ public class Inmo {
         		String head = "<head>" + 
                 		"<title>Resultado de la busqueda</title>" +
                 		" </head>";
-            	String msg = "<h1>Inmuebles disponibles para: </h1>";
+            	String msg = "<h1>Inmuebles disponibles para: "+type+"</h1>";
         		Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
             	Search search = new Search();
             	String list = search.searchByType(type);	
  
             	Base.close();
-            	return head + msg + type + list + atras;
+            	return head + msg + list + atras;
             	}
             });
             
@@ -586,7 +593,7 @@ public class Inmo {
             	String head = "<head>" + 
                 		"<title>Resultado de la busqueda</title>" +
                 		" </head>";
-            	String msg = "<h1>Inmuebles disponibles para: </h1>";
+            	String msg = "<h1>Inmuebles disponibles entre:"+minPrice+" y "+maxPrice +" </h1>";
         		Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");
             	Search search = new Search();
             	String list = search.searchByPrice(minPrice,maxPrice);	
@@ -605,7 +612,7 @@ public class Inmo {
         		String head = "<head>" + 
                 		"<title>Resultado de la busqueda</title>" +
                 		" </head>";
-            	String msg = "<h1>Inmuebles en: </h1>";
+            	String msg = "<h1>Inmuebles en: "+locality+" </h1>";
         		Base.open("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/inmoapp_development", "root", "root");	
         		Search search = new Search();
         		int id = search.verifLocality(locality);
@@ -617,7 +624,7 @@ public class Inmo {
             	String list = search.searchByLocality(id);	
  
             	Base.close();
-            	return head + msg + locality + list + atras;
+            	return head + msg + list + atras;
             	}
             });
             
@@ -786,6 +793,8 @@ public class Inmo {
         	  return writer;
            }
           });
+            
+           
             
             
             System.out.println( "Hello World!" );

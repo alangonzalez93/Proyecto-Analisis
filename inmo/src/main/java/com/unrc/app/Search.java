@@ -44,7 +44,7 @@ public class Search{
 			String description = b.getString("description");
 			String barrio = b.getString("neighborhood");
 			String street = b.getString("b_street");
-			list = "\n" + list + "ID: " + id + "Tipo: "+ type + " Descripcion: "+ description + " Precio: " + price + " Barrio: " + barrio + " Direccion: " + street +"\n"+"\n";
+			list = "\n" + list + "ID: " + id + ", Tipo: "+ type + ", Descripcion: "+ description + ", Precio: " + price + ", Barrio: " + barrio + ", Direccion: " + street +"\n"+"\n";
 			i++;
 		}
 		return list;	
@@ -63,7 +63,7 @@ public class Search{
 			String description = b.getString("description");
 			String barrio = b.getString("neighborhood");
 			String street = b.getString("b_street");
-			list = "\n" + list + "ID: " + id + "Categoria: " + category +" Descripcion: "+ description + " Precio: " + price +  " Barrio: " + barrio + " Direccion: " + street +"\n"+"\n";
+			list = "\n" + list + "ID: " + id + ", Categoria: " + category +", Descripcion: "+ description + ", Precio: " + price +  ", Barrio: " + barrio + ", Direccion: " + street +"\n"+"\n";
 			i++;
 		}
 		return list;	
@@ -82,7 +82,7 @@ public class Search{
 			String street = b.getString("b_street");
 			String type = b.getString("type");
 			String cat = b.getString("category");
-			list = "\n" + list + "ID: " + id +" Tipo: "+ type + " Categoria: " + cat +" Descripcion: "+ description + " Precio: " + p +  " Barrio: " + barrio + " Direccion: " + street +"\n"+"\n";
+			list = "\n" + list + "ID: " + id +", Tipo: "+ type + ", Categoria: " + cat +", Descripcion: "+ description + ", Precio: " + p + ", Barrio: " + barrio + ", Direccion: " + street +"\n"+"\n";
 			i++;
 		}
 		return list;	
@@ -104,7 +104,7 @@ public class Search{
 			String street = b.getString("b_street");
 			String type = b.getString("type");
 			String cat = b.getString("category");
-			list = "\n" + list + "ID: " + idb +" Tipo: "+ type + " Categoria: " + cat +" Descripcion: "+ description + " Precio: " + p +  " Barrio: " + barrio + " Direccion: " + street +"\n"+"\n";
+			list = "\n" + list + "ID: " + idb +", Tipo: "+ type + ", Categoria: " + cat +", Descripcion: "+ description + ", Precio: " + p +  ", Barrio: " + barrio + ", Direccion: " + street +"\n"+"\n";
 			i++;
 		}
 		return list;	
@@ -132,7 +132,7 @@ public class Search{
 			String nameow = owner.getString("owner_name");
 			String mail = owner.getString("owner_mail");
 			
-			list= "\n"+list+" Precio: "+price+ " id: "+ id +" Tipo: "+type+" Categoria: "+category +" Direccion: "+street+" Barrio: "+neigh+" Localidad: "+namelocality+ " Descripcion: "+desc+"Duenio: "+ nameow+ " Mail de contacto " + mail+ "\n";
+			list= "\n"+list+". Precio: "+price+ ", id: "+ id +", Tipo: "+type+", Categoria: "+category +", Direccion: "+street+", Barrio: "+neigh+", Localidad: "+namelocality+ ", Descripcion: "+desc+", Duenio: "+ nameow+ ", Mail de contacto " + mail+ "\n";
 			i++;
 		}
 		return list;
@@ -156,7 +156,7 @@ public class Search{
 			Locality loc = Locality.first("id = ?", locality);
 			String namelocality = loc.getString("name");
 			
-			list= "\n"+list+" Nombre: "+name+ " id: "+ id + " Localidad: "+ namelocality+ " Barrio: "+ neigh+ " Calle: "+ street+ " Telefono: "+ tel+ " Mail: "+mail+" Web: "+web +"\n";
+			list= "\n"+list+". Nombre: "+name+ ", id: "+ id + ", Localidad: "+ namelocality+ ", Barrio: "+ neigh+ ", Calle: "+ street+ ", Telefono: "+ tel+ ", Mail: "+mail+", Web: "+web +"\n";
 			i++;
 		}
 		return list;
@@ -177,7 +177,7 @@ public class Search{
 			int locality = ownie.getInteger("locality_id");
 			Locality loc = Locality.first("id =?",locality);
 			String name_locality = loc.getString ("name");
-			listOwn = "\n"+listOwn+" Nombre: "+name+" E-mail: "+mail+" Localidad: "+name_locality+" Barrio: "+neighborhood+" Calle: "+street+" DNI: "+dni+"\n";
+			listOwn = "\n"+listOwn+". Nombre: "+name+", E-mail: "+mail+", Localidad: "+name_locality+", Barrio: "+neighborhood+", Calle: "+street+", DNI: "+dni+"\n";
 			i++;
 		}
 		return listOwn;
