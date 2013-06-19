@@ -50,20 +50,19 @@ public class ABMOwner {
 		}
 	}
 
-	public void ModWebOw(String dni, String web){
+	public void ModWebOw(String name, String web){
 		Owner OW = new Owner();
-		OW = Owner.first("owner_dni = ?", dni);
+		OW = Owner.first("owner_name = ?", name);
 		OW.set("web", web);
 		OW.saveIt();
 	}
 
-	public void ModMailOw(String dni, String mail){
+	public void ModMailOw(String name, String mail){
 		Owner OW = new Owner();
-		OW = Owner.first("owner_dni = ?", dni);
+		OW = Owner.first("owner_name = ?", name);
 		OW.set("owner_mail", mail);
 		OW.saveIt();
 	}
 
 }
-
 
